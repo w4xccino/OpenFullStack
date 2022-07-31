@@ -1,0 +1,19 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  margin: 10px;
+  width: 200px;
+  justify-content: center;
+}
+
+h1,
+h2 {
+  margin-left: 10px;
+}
+p {
+  margin-left: 10px;
+}
