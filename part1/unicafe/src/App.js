@@ -13,7 +13,7 @@ function App() {
     setBad(bad + 1);
   };
   const neutralClicked = () => {
-    return setNeutral(neutral + 1);
+    setNeutral(neutral + 1);
   };
   return (
     <div className="App">
