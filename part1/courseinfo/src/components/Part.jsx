@@ -1,9 +1,8 @@
 const Part = ({ name, number }) => {
   return (
     <div>
-      <h4>{name}</h4>
+      <b>{name}</b>
       <p>There are {number}.</p>
-      <hr />
     </div>
   );
 };
