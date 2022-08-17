@@ -8,7 +8,6 @@ const Content = ({ parts }) => {
     });
     return s;
   };
-  // falta iterar aca porque no coinciden los indices, asi como tambien en el componente Course.jsx
   return (
     <div>
       {parts.map((el) => {
