@@ -1,32 +1,40 @@
 import { useState } from "react";
-import "./App.css";
 import Person from "./components/Person";
 
 function App() {
   const people = [
     {
       name: "Arto Hellas",
+      number: "040-1234567",
     },
   ];
   const [persons, setPersons] = useState(people);
   const [newName, setNewName] = useState("");
+  const [newNumber, setNewNumber] = useState("");
 
   const addNewPerson = (event) => {
     event.preventDefault();
     if (persons.filter((el) => el.name === newName).length > 0) {
       alert(`${newName} is already added to phonebook`);
       setNewName("");
+      setNewNumber("");
       return;
     }
     const newPerson = {
       name: newName,
+      number: newNumber,
     };
     setPersons(persons.concat(newPerson));
     setNewName("");
+    setNewNumber("");
   };
 
   const inputPersonHandler = (event) => {
     setNewName(event.target.value);
+  };
+
+  const inputNumberHandler = (event) => {
+    setNewNumber(event.target.value);
   };
 
   return (
@@ -39,6 +47,14 @@ function App() {
             placeholder="Add new name here..."
             value={newName}
             onChange={inputPersonHandler}
+          />
+        </div>
+        <div>
+          number:{" "}
+          <input
+            placeholder="Add new number here..."
+            value={newNumber}
+            onChange={inputNumberHandler}
           />
         </div>
         <div>
