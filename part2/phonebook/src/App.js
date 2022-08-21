@@ -13,6 +13,11 @@ function App() {
 
   const addNewPerson = (event) => {
     event.preventDefault();
+    if (persons.filter((el) => el.name === newName).length > 0) {
+      alert(`${newName} is already added to phonebook`);
+      setNewName("");
+      return;
+    }
     const newPerson = {
       name: newName,
     };
