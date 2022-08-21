@@ -7,10 +7,15 @@ function App() {
       name: "Arto Hellas",
       number: "040-1234567",
     },
+    { name: "Ada Lovelace", number: "39-44-5323523" },
+    { name: "Dan Abramov", number: "12-43-234345" },
+    { name: "Mary Poppendieck", number: "39-23-6423122" },
   ];
   const [persons, setPersons] = useState(people);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
+  const [showAll, setShowAll] = useState(true);
+  const [filter, setFilter] = useState("");
 
   const addNewPerson = (event) => {
     event.preventDefault();
@@ -37,9 +42,24 @@ function App() {
     setNewNumber(event.target.value);
   };
 
+  const inputFilterHandler = (event) => {
+    setFilter(event.target.value);
+  };
+  const personsToShow =
+    showAll && filter.length === 0
+      ? persons
+      : persons.filter(
+          (el) => el.name.toLowerCase().includes(filter.toLowerCase()) // easy way to search data
+        );
+
   return (
     <div className="App">
       <h2>PhoneBook</h2>
+      <div>
+        filter by name:
+        <input value={filter} onChange={inputFilterHandler} />
+      </div>
+      <h2>Add a New</h2>
       <form onSubmit={addNewPerson}>
         <div>
           name:{" "}
@@ -62,7 +82,7 @@ function App() {
         </div>
       </form>
       <h2>Numbers: </h2>
-      {persons.map((el) => {
+      {personsToShow.map((el) => {
         return (
           <ul key={el.name}>
             <Person person={el} />
