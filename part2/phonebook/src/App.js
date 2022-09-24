@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Person from "./components/Person";
 import Input from "./components/AddData";
+import axios from "axios";
 
-function App({ people }) {
-  const [persons, setPersons] = useState(people);
+function App() {
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    const promise = axios.get("http://localhost:3001/persons");
+    promise.then((response) => {
+      console.log(response.data);
+      setPersons(response.data);
+    });
+  }, []);
 
   const addNewPerson = (event) => {
     event.preventDefault();
